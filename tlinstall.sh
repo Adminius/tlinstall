@@ -26,17 +26,19 @@ echo "Create folders"
 mkdir -p backup mysql invoices
 chmod 777 backup mysql invoices
 
-echo "Downloas TeslaLogger"
+echo "Download TeslaLogger"
 wget https://raw.githubusercontent.com/bassmaster187/TeslaLogger/refs/heads/NET8/.env -O .env
 wget https://raw.githubusercontent.com/bassmaster187/TeslaLogger/refs/heads/NET8/docker-compose.yml -O docker-compose.yml
 
-echo "Download Docker Contariners"
+echo "Download Docker Containers"
 docker compose pull
 
-echo "Local IP address:"
-ip -4 addr show scope global | grep inet | awk '{print $2}' | cut -d/ -f1
+SERVER_IP="$(ip addr | grep -A8 -m1 MULTICAST | grep -m1 inet | cut -d' ' -f6 | cut -d'/' -f1)"
 
 echo "Setup finished"
-echo "Please adjust some settings in your .env file like Timezone (default is MEZ / Berlin) if neccessary"
+
+echo "Please adjust some settings in your .env file like Timezone (default is MEZ / Berlin) if necessary"
+
 echo "run 'docker compose up -d' to start TeslaLogger"
-echo "wait 1-2 minutes and open in browser http://your-ip:8888/admin"
+
+echo "wait 1-2 minutes and open in browser http://$SERVER_IP:8888/admin"
