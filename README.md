@@ -7,9 +7,10 @@ wget https://raw.githubusercontent.com/Adminius/tlinstall/refs/heads/main/tlinst
 sh tlinstall.sh
 ```
 
-## Install in Proxmox LCX
+## Install in Proxmox LXC
 
 Create new CT:
+
 ![Image](img/01.png)
 
 ![Image](img/02.png)
@@ -26,4 +27,4 @@ Create new CT:
 
 ![Image](img/08.png)
 
-and than run installation script (see above)
+and then run installation script (see above)
