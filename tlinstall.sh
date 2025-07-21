@@ -8,6 +8,11 @@ fi
 echo "System update running"
 apt update && apt upgrade -y
 
+if ! command -v curl &> /dev/null; then
+  echo "curl will be installed"
+  apt install curl -y
+fi
+
 echo "Install docker"
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
